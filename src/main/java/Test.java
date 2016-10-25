@@ -6,7 +6,7 @@ import sample.StatelessClass;
  */
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        StatelessClassLoader statelessClassLoader = new StatelessClassLoader("class_loader.jar", "sample.impl");
+        ClassLoader statelessClassLoader = new StatelessClassLoader("class_loader.jar", "sample.impl");
         Class<?> clazz = statelessClassLoader.loadClass("StatelessClassImpl");
         //Class<?> clazz = statelessClassLoader.loadClass("StatelessClassBadImpl");
         StatelessClass sample = (StatelessClass) clazz.newInstance();
