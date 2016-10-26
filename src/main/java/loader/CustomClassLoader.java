@@ -5,7 +5,6 @@ import org.apache.commons.lang.StringUtils;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -28,7 +27,7 @@ public class CustomClassLoader extends ClassLoader {
     private void cacheClasses() {
         try {
             JarFile jarFile = new JarFile(jarFileName);
-            Collections.list(jarFile.entries()).forEach(j -> cacheClasses(j, jarFile));
+            jarFile.stream().forEach(j -> cacheClasses(j, jarFile));
         } catch (IOException ignore) {
             System.out.println("Warning : No jar file found");
         }
